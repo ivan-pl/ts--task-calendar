@@ -77,5 +77,8 @@
       "stylelint --fix"
     ],
     "*.{md,json,html,yml}": "prettier --write"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
