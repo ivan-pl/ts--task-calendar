@@ -39,7 +39,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
     new FaviconsWebpackPlugin("./src/assets/images/favicon.png"),
   ],
 };
