@@ -26,4 +26,13 @@ module.exports = {
     "import/no-unresolved": "off",
     "import/extensions": "off",
   },
+  overrides: [
+    {
+      files: ["webpack.*.js"],
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+        "import/extensions": "off",
+      },
+    },
+  ],
 };
