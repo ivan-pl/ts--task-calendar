@@ -1,4 +1,5 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
+import "./navbar.scss";
 
 function renderNavbar(root: HTMLElement): void {
   const innerHTML = `
