@@ -1,5 +1,5 @@
 import "normalize.css";
-import "./index.scss";
+import "./app/styles/index.scss";
 
 import { initApp } from "./app";
 
