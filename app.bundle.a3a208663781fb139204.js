@@ -320,6 +320,9 @@ function renderNavbar(root) {
   root.innerHTML = innerHTML;
 }
 /* harmony default export */ const navbar_renderNavbar = (renderNavbar);
+;// CONCATENATED MODULE: ./src/features/navbar/index.ts
+
+
 ;// CONCATENATED MODULE: ./src/features/calendar/renderCalendar.ts
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
