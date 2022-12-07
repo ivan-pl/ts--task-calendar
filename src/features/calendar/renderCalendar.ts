@@ -7,6 +7,7 @@ function renderCalendar(root: HTMLElement): void {
   const calendar = createElement("section", "calendar");
   const month = createMonth(2022, 11);
   calendar.append(month);
+  root.innerHTML = "";
   root.append(calendar);
 }
 
