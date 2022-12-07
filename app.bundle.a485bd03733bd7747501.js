@@ -664,6 +664,7 @@ function to2DArray(arr, cols) {
 const DAYS_COUNT = 42; // number of days which renders on page
 const WEEKS_COUNT = 6; // number of weeks which renders on page
 const DAYS_IN_WEEK = 7;
+const DAYS_OF_WEEK = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 ;// CONCATENATED MODULE: ./src/features/calendar/utils/getDatesArray.ts
 
 
@@ -698,10 +699,15 @@ function createDay(date) {
   }, innerHTML);
   return day;
 }
-function createWeek(week) {
+function createWeek(week, currentMonth) {
   const weekElement = createElement("div", "week");
   for (let i = 0; i < week.length; i++) {
-    weekElement.append(createDay(week[i]));
+    const date = week[i];
+    const dayEl = createDay(date);
+    if (date.getMonth() !== currentMonth) {
+      dayEl.classList.add("day--gray");
+    }
+    weekElement.append(dayEl);
   }
   return weekElement;
 }
@@ -713,19 +719,33 @@ function createMonth(year, month) {
   const arrOfWeeks = getDatesArray(year, month);
   const monthElement = createElement("div", "month");
   for (const week of arrOfWeeks) {
-    monthElement.append(createWeek(week));
+    monthElement.append(createWeek(week, month));
   }
   return monthElement;
+}
+;// CONCATENATED MODULE: ./src/features/calendar/createDaysOfWeek.ts
+
+function createDaysOfWeek() {
+  const week = document.createElement("div");
+  week.classList.add("legend");
+  for (const dayName of DAYS_OF_WEEK) {
+    const day = document.createElement("div");
+    day.innerText = dayName;
+    day.classList.add("day-of-week");
+    week.append(day);
+  }
+  return week;
 }
 ;// CONCATENATED MODULE: ./src/features/calendar/renderCalendar.ts
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 
 
+
 function renderCalendar(root) {
   const calendar = createElement("section", "calendar");
-  const month = createMonth(2022, 11);
-  calendar.append(month);
+  calendar.append(createDaysOfWeek());
+  calendar.append(createMonth(2022, 11));
   root.innerHTML = "";
   root.append(calendar);
 }
