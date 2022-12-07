@@ -16,12 +16,27 @@
   /* mobile viewport bug fix */
   min-height: 100vh;
   min-height: fill-available;
+  display: grid;
+  grid-template:
+    "header" min-content
+    "main" 1fr
+    / auto;
+}
+
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
 }
 
 .header,
 .main {
   max-width: 1440px;
   min-width: 700px;
+  height: 100%;
+  width: 100%;
   scroll-behavior: smooth;
   margin: auto;
 }

@@ -6,6 +6,5 @@ describe("renderCalendar()", () => {
     renderCalendar(root);
     const calendarElement = root.querySelector(".calendar") as HTMLElement;
     expect(calendarElement).toBeInstanceOf(HTMLElement);
-    expect(calendarElement.innerHTML).toBe("Calendar page");
   });
 });

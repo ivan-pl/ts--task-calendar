@@ -1,0 +1,35 @@
+.calendar {
+  margin-top: 50px;
+  height: 100%;
+}
+
+.month {
+  margin: auto;
+  height: 100%;
+  min-height: 600px;
+  max-width: 1200px;
+}
+
+.week {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  height: 10%;
+}
+
+.day {
+  width: 14%;
+  border: 1px solid #bfbfbf;
+
+  &:hover {
+    border: 2px solid black;
+  }
+
+  &__date {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 18px;
+  }
+}

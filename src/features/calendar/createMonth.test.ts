@@ -1,18 +1,16 @@
 import createMonth from "./createMonth";
-import getDatesArray from "./utils/getDatesArray";
 import { DAYS_COUNT, WEEKS_COUNT } from "./utils/variables";
 
 describe("createMonth()", () => {
-  let arrOfWeeks: Date[][];
   let monthElement: HTMLElement;
 
   beforeEach(() => {
-    arrOfWeeks = getDatesArray(2022, 11);
-    monthElement = createMonth(arrOfWeeks);
+    monthElement = createMonth(2022, 11);
   });
 
   it("returns element", () => {
     expect(monthElement).toBeInstanceOf(HTMLElement);
+    expect(monthElement.classList.contains("month")).toBeTruthy();
   });
 
   it("consists of weeks and days", () => {
