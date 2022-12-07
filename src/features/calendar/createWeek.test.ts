@@ -28,7 +28,7 @@ describe("createWeek()", () => {
       start: new Date(2022, 11, 1),
       end: new Date(2022, 11, 7),
     });
-    const weekElement = createWeek(week);
+    const weekElement = createWeek(week, 11);
 
     const dayElements = weekElement.querySelectorAll(".day");
     expect(dayElements.length).toBe(7);

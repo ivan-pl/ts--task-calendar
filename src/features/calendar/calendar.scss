@@ -36,6 +36,10 @@
     text-align: center;
     font-size: 18px;
   }
+
+  &--gray &__date {
+    color: #bfbfbf;
+  }
 }
 
 .legend {

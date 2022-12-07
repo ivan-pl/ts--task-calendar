@@ -10,10 +10,19 @@ export function createDay(date: Date): HTMLElement {
   return day;
 }
 
-export default function createWeek(week: Date[]): HTMLElement {
+export default function createWeek(
+  week: Date[],
+  currentMonth: number
+): HTMLElement {
   const weekElement = createElement("div", "week");
   for (let i = 0; i < week.length; i++) {
-    weekElement.append(createDay(week[i]));
+    const date = week[i];
+    const dayEl = createDay(date);
+    if (date.getMonth() !== currentMonth) {
+      dayEl.classList.add("day--gray");
+    }
+
+    weekElement.append(dayEl);
   }
 
   return weekElement;

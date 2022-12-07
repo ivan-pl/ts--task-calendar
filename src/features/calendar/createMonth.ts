@@ -6,7 +6,7 @@ export default function createMonth(year: number, month: number): HTMLElement {
   const arrOfWeeks = getDatesArray(year, month);
   const monthElement = createElement("div", "month");
   for (const week of arrOfWeeks) {
-    monthElement.append(createWeek(week));
+    monthElement.append(createWeek(week, month));
   }
 
   return monthElement;
