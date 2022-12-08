@@ -54,3 +54,25 @@
     font-weight: 500;
   }
 }
+
+.month-switch {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+
+  .prev-month,
+  .next-month {
+    text-decoration: none;
+    color: black;
+    font-size: 38px;
+  }
+
+  .prev-month::after {
+    content: "\2190";
+  }
+
+  .next-month::after {
+    content: "\2192";
+  }
+}
