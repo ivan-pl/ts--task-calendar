@@ -1,16 +1,16 @@
 .calendar {
-  margin-top: 50px;
+  display: flex;
+  flex-flow: column nowrap;
   height: 100%;
 }
 
 .month,
 .legend {
-  margin: auto;
   max-width: 1200px;
 }
 
 .month {
-  height: 100%;
+  flex: 1;
   min-height: 600px;
 }
 
