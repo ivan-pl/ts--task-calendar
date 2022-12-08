@@ -9,7 +9,7 @@ interface ReturnedDate {
 
 export default function getDate(): ReturnedDate {
   let { year, month } = getQueryParams();
-  if (!year || !month) {
+  if (year === undefined || month === undefined) {
     year = getYear(Date.now());
     month = getMonth(Date.now());
   }

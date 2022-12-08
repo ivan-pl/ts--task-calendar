@@ -20,7 +20,7 @@ export default function initApp(
       setActive(LinkNames.Calendar);
     },
   });
-  router.on("/calendar", {
+  router.on(/\/calendar.*/, {
     onEnter: async () => {
       renderCalendar(appRoot);
       setActive(LinkNames.Calendar);
