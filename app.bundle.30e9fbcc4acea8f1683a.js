@@ -324,10 +324,14 @@ function renderNavbar(root) {
 
 
 ;// CONCATENATED MODULE: ./src/common/utils/createElement.ts
-function createElement(htmlTag, className, attributes, innerHTML) {
+function createElement(htmlTag, className, attributes, innerHTML, id) {
   const el = document.createElement(htmlTag);
   if (className) {
-    el.classList.add(className);
+    if (Array.isArray(className)) {
+      className.forEach(name => el.classList.add(name));
+    } else {
+      el.classList.add(className);
+    }
   }
   if (attributes) {
     for (const [attr, val] of Object.entries(attributes)) {
@@ -336,6 +340,9 @@ function createElement(htmlTag, className, attributes, innerHTML) {
   }
   if (innerHTML) {
     el.innerHTML = innerHTML;
+  }
+  if (id) {
+    el.id = id;
   }
   return el;
 }
@@ -687,7 +694,44 @@ function getDatesArray(year, month) {
     end
   }), DAYS_IN_WEEK);
 }
+;// CONCATENATED MODULE: ./src/common/modalWindow/modal.ts
+/* eslint-disable no-use-before-define */
+
+function createModal(root) {
+  const modal = createElement("section", ["modal", "hidden"], null, null, "modal");
+  const closeButton = createElement("button", "modal__close", null, "⨉");
+  closeButton.addEventListener("click", closeModal);
+  const modalContainer = createElement("div", "modal__container", null, null, "modal__container");
+  modal.append(closeButton, modalContainer);
+  const overlay = createElement("div", ["overlay", "hidden"], null, null, "overlay");
+  overlay.addEventListener("click", closeModal);
+  root.append(modal, overlay);
+  return modal;
+}
+function openModal() {
+  const modal = document.getElementById("modal");
+  const overlay = document.getElementById("overlay");
+  modal?.classList.remove("hidden");
+  overlay?.classList.remove("hidden");
+}
+function closeModal() {
+  const modal = document.getElementById("modal");
+  const overlay = document.getElementById("overlay");
+  modal?.classList.add("hidden");
+  overlay?.classList.add("hidden");
+}
+function setLayout(el) {
+  const modalContainer = document.getElementById("modal__container");
+  if (modalContainer) {
+    modalContainer.innerHTML = "";
+  }
+  modalContainer?.append(el);
+}
+;// CONCATENATED MODULE: ./src/common/modalWindow/index.ts
+
+
 ;// CONCATENATED MODULE: ./src/features/calendar/createWeek.ts
+
 
 function createDay(date) {
   const innerHTML = `
@@ -707,6 +751,7 @@ function createWeek(week, currentMonth) {
     if (date.getMonth() !== currentMonth) {
       dayEl.classList.add("day--gray");
     }
+    dayEl.addEventListener("click", openModal);
     weekElement.append(dayEl);
   }
   return weekElement;
@@ -3223,6 +3268,7 @@ function getDate() {
 
 
 
+
 function renderCalendar(root) {
   const {
     year,
@@ -3234,6 +3280,9 @@ function renderCalendar(root) {
   calendar.append(createMonth(year, month));
   root.innerHTML = "";
   root.append(calendar);
+  createModal(root);
+  const modalWindow = createElement("div", null, null, "calendar");
+  setLayout(modalWindow);
 }
 /* harmony default export */ const calendar_renderCalendar = (renderCalendar);
 ;// CONCATENATED MODULE: ./src/features/calendar/index.ts
