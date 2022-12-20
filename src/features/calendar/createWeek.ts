@@ -1,3 +1,4 @@
+import { openModal } from "../../common/modalWindow";
 import createElement from "../../common/utils/createElement";
 
 export function createDay(date: Date): HTMLElement {
@@ -22,6 +23,7 @@ export default function createWeek(
       dayEl.classList.add("day--gray");
     }
 
+    dayEl.addEventListener("click", openModal);
     weekElement.append(dayEl);
   }
 

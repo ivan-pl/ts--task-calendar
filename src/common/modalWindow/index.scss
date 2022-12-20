@@ -1,12 +1,13 @@
 .modal {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.4rem;
   width: fit-content;
   height: fit-content;
-  min-height: 200px;
-  padding: 1.3rem;
+  min-height: 300px;
+  min-width: 200px;
+  padding: 0.8rem;
   position: absolute;
   background-color: white;
   border: 1px solid #ddd;
@@ -17,6 +18,26 @@
   left: 0;
   right: 0;
   margin: auto;
+
+  &__close {
+    width: 40px;
+    border-radius: 20px;
+    border-style: none;
+    align-self: flex-end;
+    padding: 0.5rem 0.7rem;
+    transform: translate(0.5rem, -0.5rem);
+    background: rgb(232 231 231);
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(255 255 255);
+      background-color: rgb(255 176 176);
+    }
+  }
+
+  &__container {
+    flex: 1;
+  }
 }
 
 .overlay {

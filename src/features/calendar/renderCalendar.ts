@@ -5,6 +5,7 @@ import createDaysOfWeek from "./createDaysOfWeek";
 import createMonthSwitch from "./createMonthSwitch";
 import getDate from "./utils/getDate";
 import "./calendar.scss";
+import { createModal, setModalWindowLayout } from "../../common/modalWindow";
 
 function renderCalendar(root: HTMLElement): void {
   const { year, month } = getDate();
@@ -14,6 +15,10 @@ function renderCalendar(root: HTMLElement): void {
   calendar.append(createMonth(year, month));
   root.innerHTML = "";
   root.append(calendar);
+
+  createModal(root);
+  const modalWindow = createElement("div", null, null, "calendar");
+  setModalWindowLayout(modalWindow);
 }
 
 export default renderCalendar;

@@ -1,4 +1,5 @@
-import { createModal, openModal, closeModal } from "./modal";
+import createElement from "../utils/createElement";
+import { createModal, openModal, closeModal, setLayout } from "./modal";
 
 describe("createModal", () => {
   let modal: HTMLElement;
@@ -65,5 +66,19 @@ describe("closeModal", () => {
 
     expect(modal.classList.contains("hidden")).toBeTruthy();
     expect(overlay.classList.contains("hidden")).toBeTruthy();
+  });
+});
+
+describe("setLayout", () => {
+  it("sets element to modal window", () => {
+    const root = document.createElement("div");
+    const modal = createModal(root);
+    document.body.append(root);
+
+    const el1 = createElement("div", "el1");
+    setLayout(el1);
+    const container = modal.querySelector(".modal__container") as HTMLElement;
+    expect(container.childNodes.length).toBe(1);
+    expect(container.childNodes[0]).toBe(el1);
   });
 });
