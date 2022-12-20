@@ -26,6 +26,8 @@ module.exports = {
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "no-restricted-syntax": ["off", "ForOfStatement"],
+    "no-shadow": "off",
+    "no-use-before-define": ["error", { functions: false }],
   },
   overrides: [
     {
