@@ -23,4 +23,16 @@ describe("createElement()", () => {
     const el = createElement("div", null, null, innerHTML);
     expect(el.innerHTML).toBe(innerHTML);
   });
+
+  it("supports array of classes", () => {
+    const classes = ["classA", "classB"];
+    const el = createElement("div", classes);
+    expect([...el.classList]).toEqual(classes);
+  });
+
+  it("adds id", () => {
+    const id = "uid";
+    const el = createElement("div", null, null, null, id);
+    expect(el.id).toBe(id);
+  });
 });
