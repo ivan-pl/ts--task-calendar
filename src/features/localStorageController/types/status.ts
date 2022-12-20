@@ -1,7 +1,7 @@
 enum EStatus {
-  INPROCESS = "INPROCESS",
-  PENDING = "PENDING",
-  DONE = "DONE",
+  INPROCESS = "In progress",
+  PENDING = "Pending",
+  DONE = "Done",
 }
 
 export default EStatus;
