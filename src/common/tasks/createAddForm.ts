@@ -3,7 +3,7 @@ import createElement from "../utils/createElement";
 
 const TEMPLATE = `
   <input id="new-task__date" class="new-task__date" type="date" />
-  <input id="new-task__description" class="new-task__description" placeholder="Enter a task description" />
+  <input id="new-task__description" class="new-task__description" placeholder="Enter a task description" autocomplete="off" />
   <select name="tag" id="new-task__tag"> 
     <option value="">--Please choose an option--</option>
     <option value="Work">Work</option>
