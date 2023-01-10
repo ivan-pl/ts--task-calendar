@@ -5,11 +5,10 @@ const TEMPLATE = `
   <input id="new-task__date" class="new-task__date" type="date" />
   <input id="new-task__description" class="new-task__description" placeholder="Enter a task description" autocomplete="off" />
   <select name="tag" id="new-task__tag"> 
-    <option value="">--Please choose an option--</option>
+    <option value="Other">Other</option>
     <option value="Work">Work</option>
     <option value="Study">Study</option>
     <option value="Leisure">Leisure</option>
-    <option value="Other">Other</option>
   </select >
   <select name="status" id="new-task__status"> 
     <option value="In progress">In progress</option>
@@ -25,6 +24,14 @@ export default function createAddForm(
   const form = createElement("form", "new-task", null, TEMPLATE, "new-task");
   const dateInput = form.querySelector("#new-task__date") as HTMLInputElement;
   dateInput.value = format(date, "yyyy-MM-dd");
+
+  const button = form.querySelector("#new-task__add") as HTMLButtonElement;
+  const descInput = form.querySelector(
+    "#new-task__description"
+  ) as HTMLInputElement;
+  descInput.addEventListener("input", () => {
+    button.disabled = !descInput.value;
+  });
 
   return form;
 }
