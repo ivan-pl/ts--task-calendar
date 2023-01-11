@@ -1,3 +1,4 @@
-import initApp from "./initApp";
+import initApp, { taskLocalStorage } from "./initApp";
+import { store } from "./store";
 
-export { initApp };
+export { initApp, taskLocalStorage, store };

@@ -6,6 +6,9 @@ import { renderAbout } from "../features/about";
 import { renderList } from "../features/list";
 import { LinkNames } from "../features/navbar/types";
 import setActive from "../features/navbar/setActive";
+import { CalendarController } from "../common/localStorageController/calendarController";
+
+export const taskLocalStorage = new CalendarController();
 
 export default function initApp(
   navRoot: HTMLElement,

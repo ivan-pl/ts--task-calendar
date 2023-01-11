@@ -1,5 +1,5 @@
 import createAddForm from "./createAddForm";
-import EStatus from "../../features/localStorageController/types/status";
+import EStatus from "../localStorageController/types/status";
 
 describe("createAddForm()", () => {
   const curDate = "2022-12-20";

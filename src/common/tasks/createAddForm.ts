@@ -1,5 +1,9 @@
 import { format } from "date-fns";
+import { addTask } from "./tasksSlice";
 import createElement from "../utils/createElement";
+import { store } from "../../app";
+import EStatus from "../localStorageController/types/status";
+import ETag from "../localStorageController/types/tag";
 
 const TEMPLATE = `
   <input id="new-task__date" class="new-task__date" type="date" />
@@ -29,9 +33,27 @@ export default function createAddForm(
   const descInput = form.querySelector(
     "#new-task__description"
   ) as HTMLInputElement;
+
   descInput.addEventListener("input", () => {
     button.disabled = !descInput.value;
   });
+  button.addEventListener("click", handleClick);
 
   return form;
+}
+
+function handleClick() {
+  const date = new Date(
+    (document.querySelector("#new-task__date") as HTMLInputElement).value
+  );
+  const description = (
+    document.querySelector("#new-task__description") as HTMLInputElement
+  ).value;
+  const status = (
+    document.querySelector("#new-task__status") as HTMLInputElement
+  ).value as EStatus;
+  const tag = (document.querySelector("#new-task__tag") as HTMLInputElement)
+    .value as ETag;
+
+  store.dispatch(addTask({ date, description, status, tag }));
 }
