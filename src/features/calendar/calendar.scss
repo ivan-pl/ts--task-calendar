@@ -1,0 +1,99 @@
+.calendar {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.month,
+.legend {
+  max-width: 1200px;
+}
+
+.month {
+  flex: 1;
+  min-height: 600px;
+}
+
+.week {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  height: 10%;
+}
+
+.day {
+  width: 14%;
+  border: 1px solid #bfbfbf;
+
+  &:hover {
+    border: 2px solid black;
+    cursor: pointer;
+  }
+
+  &__date {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  &--gray &__date {
+    color: #bfbfbf;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  .day-of-week {
+    width: 14%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.month-switch {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+
+  .prev-month {
+    background-position: -100%;
+  }
+
+  .next-month {
+    background-position: 100%;
+  }
+
+  .prev-month,
+  .next-month {
+    text-decoration: none;
+    font-size: 38px;
+    background-image: linear-gradient(to right, #54b3d6, #54b3d6 50%, #000 50%);
+    background-size: 200% 100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    background-clip: text;
+    -webkit-background-clip: text; // stylelint-disable-line
+    color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-position: 0;
+    }
+  }
+
+  .prev-month::after {
+    content: "\2190";
+  }
+
+  .next-month::after {
+    content: "\2192";
+  }
+}

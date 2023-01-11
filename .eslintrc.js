@@ -25,6 +25,10 @@ module.exports = {
     "no-plusplus": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
+    "no-restricted-syntax": ["off", "ForOfStatement"],
+    "no-shadow": "off",
+    "no-use-before-define": ["error", { functions: false }],
+    "@typescript-eslint/no-non-null-assertion": "off",
   },
   overrides: [
     {

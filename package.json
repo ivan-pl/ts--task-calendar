@@ -80,6 +80,9 @@
     "*.{md,json,html,yml}": "prettier --write"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "@reduxjs/toolkit": "^1.9.1",
+    "date-fns": "^2.29.3",
+    "normalize.css": "^8.0.1",
+    "some-router": "^1.0.2"
   }
 }
